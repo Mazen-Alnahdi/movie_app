@@ -3,6 +3,7 @@
 import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 import 'package:flutter/foundation.dart'
     show defaultTargetPlatform, kIsWeb, TargetPlatform;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 /// Default [FirebaseOptions] for use with your Firebase apps.
 ///
@@ -46,8 +47,8 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyDsZUeTJHKY2Q_A02jjQj1wheAnvFUqV7o',
+  static final FirebaseOptions web = FirebaseOptions(
+    apiKey: dotenv.env['FIREBASE_API_KEY_WEB'] as String,
     appId: '1:952712148759:web:4299925b3f04717235a952',
     messagingSenderId: '952712148759',
     projectId: 'movie-app-b9012',
@@ -56,16 +57,16 @@ class DefaultFirebaseOptions {
     measurementId: 'G-3XQEYXQV15',
   );
 
-  static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDgNpxre3-_H8VDNab3JmAmdvy7ZypJ6Qs',
+  static final FirebaseOptions android = FirebaseOptions(
+    apiKey: dotenv.env['FIREBASE_API_KEY_ADNROID'] as String,
     appId: '1:952712148759:android:e46cf4e40dff3b2c35a952',
     messagingSenderId: '952712148759',
     projectId: 'movie-app-b9012',
     storageBucket: 'movie-app-b9012.firebasestorage.app',
   );
 
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyD7rWMNBN-CMAODAldcs2wJoc_B1469-zg',
+  static final FirebaseOptions ios = FirebaseOptions(
+    apiKey: dotenv.env['FIREBASE_API_KEY_IOS'] as String,
     appId: '1:952712148759:ios:23d3f4d48609043a35a952',
     messagingSenderId: '952712148759',
     projectId: 'movie-app-b9012',
