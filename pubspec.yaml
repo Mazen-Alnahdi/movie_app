@@ -44,6 +44,7 @@ dependencies:
   uuid: ^4.5.1
   firebase_auth: ^5.6.2
   flutter_dotenv: ^5.2.1
+  cloud_firestore: ^5.6.11
 
 dev_dependencies:
   flutter_test:
@@ -58,6 +59,8 @@ dev_dependencies:
   very_good_analysis: ^9.0.0
   bloc_test: ^10.0.0
   mocktail: ^1.0.4
+  firebase_auth_mocks: ^0.14.2
+  fake_cloud_firestore: ^3.1.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

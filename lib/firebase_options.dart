@@ -48,7 +48,7 @@ class DefaultFirebaseOptions {
   }
 
   static final FirebaseOptions web = FirebaseOptions(
-    apiKey: dotenv.env['FIREBASE_API_KEY_WEB'] as String,
+    apiKey: dotenv.env['FIREBASE_API_KEY_WEB'].toString(),
     appId: '1:952712148759:web:4299925b3f04717235a952',
     messagingSenderId: '952712148759',
     projectId: 'movie-app-b9012',
@@ -58,7 +58,7 @@ class DefaultFirebaseOptions {
   );
 
   static final FirebaseOptions android = FirebaseOptions(
-    apiKey: dotenv.env['FIREBASE_API_KEY_ADNROID'] as String,
+    apiKey: dotenv.env['FIREBASE_API_KEY_ANDROID'].toString(),
     appId: '1:952712148759:android:e46cf4e40dff3b2c35a952',
     messagingSenderId: '952712148759',
     projectId: 'movie-app-b9012',
@@ -66,7 +66,7 @@ class DefaultFirebaseOptions {
   );
 
   static final FirebaseOptions ios = FirebaseOptions(
-    apiKey: dotenv.env['FIREBASE_API_KEY_IOS'] as String,
+    apiKey: dotenv.env['FIREBASE_API_KEY_IOS'].toString(),
     appId: '1:952712148759:ios:23d3f4d48609043a35a952',
     messagingSenderId: '952712148759',
     projectId: 'movie-app-b9012',

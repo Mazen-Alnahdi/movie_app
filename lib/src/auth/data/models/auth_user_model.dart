@@ -16,4 +16,7 @@ class AuthUserModel extends AuthUser {
   AuthUser toEntity() {
     return AuthUser(id: id, name: name, email: email);
   }
+
+  @override
+  List<Object?> get props => [id, email, name];
 }
