@@ -5,7 +5,7 @@ abstract class Failure extends Equatable {
   final String message;
   final int statusCode;
 
-  Failure({required this.message, required this.statusCode});
+  const Failure({required this.message, required this.statusCode});
 
   String get errorMessage => '$statusCode Error: $message';
 
@@ -14,9 +14,14 @@ abstract class Failure extends Equatable {
 }
 
 //This is for exception messages and status code when api fails
-class APIFailure extends Failure {
-  APIFailure({required super.message, required super.statusCode});
 
-  APIFailure.fromException(APIException exception)
+class ServerFailure extends Failure {
+  const ServerFailure({required super.message, required super.statusCode});
+
+  ServerFailure.fromException(ServerException exception)
     : this(message: exception.message, statusCode: exception.statusCode);
+}
+
+class CacheFailure extends Failure {
+  const CacheFailure({required super.message, required super.statusCode});
 }

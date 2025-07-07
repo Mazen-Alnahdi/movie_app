@@ -1,30 +1,21 @@
 import 'package:equatable/equatable.dart';
 
-class APIException extends Equatable implements Exception {
-  final bool success;
+class LocalException extends Equatable implements Exception {
   final String message;
   final int statusCode;
 
-  APIException({
-    required this.success,
-    required this.message,
-    required this.statusCode,
-  });
+  LocalException({required this.message, required this.statusCode});
 
   @override
-  List<Object> get props => [success, message, statusCode];
-
-  factory APIException.fromJson(Map<String, dynamic> json) {
-    return APIException(
-      success: json['success'] as bool,
-      message: json['message'] as String,
-      statusCode: json['statusCode'] as int,
-    );
-  }
+  List<Object> get props => [message, statusCode];
 }
 
-class LocalException implements Exception {
+class ServerException extends Equatable implements Exception {
   final String message;
+  final int statusCode;
 
-  LocalException({required this.message});
+  const ServerException({required this.message, required this.statusCode});
+
+  @override
+  List<Object> get props => [message, statusCode];
 }
