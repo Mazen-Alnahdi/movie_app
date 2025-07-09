@@ -25,6 +25,14 @@ void main() {
     email: 'email',
     password: 'password1',
   );
+  //failed validation for password
+  const gSignUpParams = SignUpParams(
+    name: 'name',
+    email: 'test@test.com',
+    password: 'password',
+  );
+  //failed validation for name
+  const hSignUpParams = SignUpParams(name: '', email: '', password: '');
 
   const tServerFailure = ServerFailure(message: 'message', statusCode: '400');
 
@@ -98,6 +106,45 @@ void main() {
         password: fSignUpParams.password,
       ),
       expect: () => [SignUpInProgress(), SignUpFailed('Invalid Email Format')],
+      verify: (_) {
+        verifyNever(() => mockSignUp(tSignUpParams));
+        verifyNoMoreInteractions(mockSignUp);
+      },
+    );
+    blocTest<SignUpCubit, SignUpState>(
+      'Should emit [SignUpInProgress, SignUpFailed] when validating password',
+      build: () {
+        when(() => mockSignUp(any())).thenAnswer((_) async => Right(tAuthUser));
+        return cubit;
+      },
+      act: (cubit) => cubit.signUp(
+        name: gSignUpParams.name,
+        email: gSignUpParams.email,
+        password: gSignUpParams.password,
+      ),
+      expect: () => [
+        SignUpInProgress(),
+        SignUpFailed(
+          'Password must be at least 6 characters and contain at least one number',
+        ),
+      ],
+      verify: (_) {
+        verifyNever(() => mockSignUp(tSignUpParams));
+        verifyNoMoreInteractions(mockSignUp);
+      },
+    );
+    blocTest<SignUpCubit, SignUpState>(
+      'Should emit [SignUpInProgress, SignUpFailed] when validating name',
+      build: () {
+        when(() => mockSignUp(any())).thenAnswer((_) async => Right(tAuthUser));
+        return cubit;
+      },
+      act: (cubit) => cubit.signUp(
+        name: hSignUpParams.name,
+        email: hSignUpParams.email,
+        password: hSignUpParams.password,
+      ),
+      expect: () => [SignUpInProgress(), SignUpFailed('Invalid Name Format')],
       verify: (_) {
         verifyNever(() => mockSignUp(tSignUpParams));
         verifyNoMoreInteractions(mockSignUp);

@@ -17,12 +17,12 @@ class SignInCubit extends Cubit<SignInState> {
   Future<void> signIn({required String email, required String password}) async {
     emit(const SignInInProgress());
 
-    if (!Validators.isValidName(email)) {
+    if (!Validators.isValidEmail(email)) {
       emit(SignInFailed('Invalid Email'));
       return;
     }
 
-    if (!Validators.isValidName(password)) {
+    if (!Validators.isValidPassword(password)) {
       emit(SignInFailed('Invalid Password'));
       return;
     }
@@ -34,7 +34,7 @@ class SignInCubit extends Cubit<SignInState> {
       SignInParams(email: email, password: password),
     );
     result.fold(
-      (failure) => SignInFailed(failure.message),
+      (failure) => emit(SignInFailed(failure.message)),
       (user) => emit(SignInSuccess(user)),
     );
   }
