@@ -2,7 +2,7 @@ import 'package:movie_app/core/utils/typedef.dart';
 import 'package:movie_app/src/auth/domain/entities/auth_user.dart';
 
 abstract class AuthRepository {
-  ResultStream<AuthUser> get authUser;
+  ResultsStream<AuthUser, AuthUser> get authUser;
 
   ResultFuture<AuthUser> signUp({
     required String name,

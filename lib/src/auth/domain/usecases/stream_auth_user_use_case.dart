@@ -7,7 +7,7 @@ class StreamAuthUserUseCase {
 
   StreamAuthUserUseCase({required this.authRepository});
 
-  ResultStream<AuthUser> call() {
+  ResultsStream<AuthUser, AuthUser> call() {
     try {
       return authRepository.authUser;
     } catch (error) {

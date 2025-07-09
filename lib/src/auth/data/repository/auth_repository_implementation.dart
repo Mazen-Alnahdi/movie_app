@@ -11,11 +11,13 @@ class AuthRepositoryImplementation implements AuthRepository {
 
   AuthRepositoryImplementation({required this.authRemoteDataSource});
 
+  //TODO: Fix the output of the func getter authUser
+  // and check if dartz is used correctly in here or not
   @override
-  ResultStream<AuthUser> get authUser {
+  ResultsStream<AuthUser, AuthUser> get authUser {
     return authRemoteDataSource.user.map((authUserModel) {
       if (authUserModel == null) {
-        return Left(CacheFailure(message: 'No user found', statusCode: 404));
+        return Left(AuthUser.empty());
       }
       return Right(authUserModel.toEntity());
     });
