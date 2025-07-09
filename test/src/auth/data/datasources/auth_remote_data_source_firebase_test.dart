@@ -2,7 +2,7 @@ import 'package:fake_cloud_firestore/fake_cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:movie_app/src/auth/data/datasources/auth_remote_data_source_firebase.dart';
+import 'package:movie_app/src/auth/data/datasources/auth_remote_data_source.dart';
 
 // Mocks
 class MockUserCredential extends Mock implements firebase_auth.UserCredential {}
@@ -15,7 +15,7 @@ void main() {
   late MockFirebaseAuth mockFirebaseAuth;
   late MockUserCredential mockUserCredential;
   late MockUser mockUser;
-  late AuthRemoteDataSourceFirebase authRemoteDataSource;
+  late AuthRemoteDataSourceImplementation authRemoteDataSource;
   late FakeFirebaseFirestore fakeFirestore;
 
   const tEmail = "test@test.com";
@@ -32,7 +32,7 @@ void main() {
     when(() => mockUser.email).thenReturn(tEmail);
     when(() => mockUser.displayName).thenReturn(tName);
 
-    authRemoteDataSource = AuthRemoteDataSourceFirebase(
+    authRemoteDataSource = AuthRemoteDataSourceImplementation(
       fireStore: fakeFirestore,
       firebaseAuth: mockFirebaseAuth,
     );

@@ -2,9 +2,10 @@ import 'package:dartz/dartz.dart';
 import 'package:movie_app/core/error/exceptions.dart';
 import 'package:movie_app/core/error/failure.dart';
 import 'package:movie_app/core/utils/typedef.dart';
-import 'package:movie_app/src/auth/data/datasources/auth_remote_data_source.dart';
 import 'package:movie_app/src/auth/domain/entities/auth_user.dart';
 import 'package:movie_app/src/auth/domain/repositories/auth_repository.dart';
+
+import '../datasources/auth_remote_data_source.dart';
 
 class AuthRepositoryImplementation implements AuthRepository {
   final AuthRemoteDataSource authRemoteDataSource;
