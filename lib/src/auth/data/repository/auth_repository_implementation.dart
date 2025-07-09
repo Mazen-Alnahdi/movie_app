@@ -42,7 +42,7 @@ class AuthRepositoryImplementation implements AuthRepository {
   ResultVoid signOut() async {
     try {
       await authRemoteDataSource.signOut();
-      return Right(null);
+      return const Right(null);
     } on ServerException catch (e) {
       return Left(ServerFailure.fromException(e));
     }
