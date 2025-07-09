@@ -11,8 +11,7 @@ class AuthRepositoryImplementation implements AuthRepository {
 
   AuthRepositoryImplementation({required this.authRemoteDataSource});
 
-  //TODO: Fix the output of the func getter authUser
-  // and check if dartz is used correctly in here or not
+  // Todo: check if dartz is used correctly in here or not
   @override
   ResultsStream<AuthUser, AuthUser> get authUser {
     return authRemoteDataSource.user.map((authUserModel) {
