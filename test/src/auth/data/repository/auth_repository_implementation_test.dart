@@ -30,7 +30,10 @@ void main() {
     email: 'test@test.com',
   );
 
-  const tException = ServerException(message: "Unknown Error", statusCode: 500);
+  const tException = ServerException(
+    message: "Unknown Error",
+    statusCode: '500',
+  );
 
   group('authUser', () {
     test(

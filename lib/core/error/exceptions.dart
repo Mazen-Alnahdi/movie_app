@@ -2,7 +2,7 @@ import 'package:equatable/equatable.dart';
 
 class LocalException extends Equatable implements Exception {
   final String message;
-  final int statusCode;
+  final String statusCode;
 
   LocalException({required this.message, required this.statusCode});
 
@@ -12,7 +12,7 @@ class LocalException extends Equatable implements Exception {
 
 class ServerException extends Equatable implements Exception {
   final String message;
-  final int statusCode;
+  final String statusCode;
 
   const ServerException({required this.message, required this.statusCode});
 

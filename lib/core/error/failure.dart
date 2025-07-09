@@ -3,7 +3,7 @@ import 'package:movie_app/core/error/exceptions.dart';
 
 abstract class Failure extends Equatable {
   final String message;
-  final int statusCode;
+  final String statusCode;
 
   const Failure({required this.message, required this.statusCode});
 
