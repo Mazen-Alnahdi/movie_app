@@ -16,6 +16,11 @@ For help getting started with Flutter development, view the
 samples, guidance on mobile development, and a full API reference.
 
 
-##Demo of the Sign up and Sign In
+## Demo Video
 
-[![Demo  alpha](https://share.gifyoutube.com/KzB6Gb.gif)](https://www.youtube.com/watch?v=ek1j272iAmc)
+<video src="assets/video.mp4" controls width="600"></video>
+
+## Screenshots
+
+![Firebase Firestore](assets/image1.png)
+![Firebase Auth](assets/image2.png)
