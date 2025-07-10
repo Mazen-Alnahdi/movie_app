@@ -16,19 +16,9 @@ final sl = GetIt.instance;
 
 Future<void> init() async {
   sl
-    //Application Logic
-    ..registerFactory(() => SignInCubit(signInUseCase: sl()))
-    ..registerFactory(() => SignUpCubit(signUpUseCase: sl()))
-    //use cases
-    ..registerLazySingleton(() => SignInUseCase(authRepository: sl()))
-    ..registerLazySingleton(() => SignUpUseCase(authRepository: sl()))
-    //NOT USED YET
-    ..registerLazySingleton(() => SignOutUseCase(authRepository: sl()))
-    ..registerLazySingleton(() => StreamAuthUserUseCase(authRepository: sl()))
-    //Repository
-    ..registerLazySingleton<AuthRepository>(
-      () => AuthRepositoryImplementation(authRemoteDataSource: sl()),
-    )
+    //External Dependencies
+    ..registerLazySingleton<FirebaseFirestore>(() => FirebaseFirestore.instance)
+    ..registerLazySingleton(() => FirebaseAuth.instance)
     //Data Sources
     ..registerLazySingleton<AuthRemoteDataSource>(
       () => AuthRemoteDataSourceImplementation(
@@ -36,7 +26,17 @@ Future<void> init() async {
         firebaseAuth: sl(),
       ),
     )
-    //External Dependencies
-    ..registerLazySingleton<FirebaseFirestore>(() => FirebaseFirestore.instance)
-    ..registerLazySingleton(() => FirebaseAuth.instance);
+    //Repository
+    ..registerLazySingleton<AuthRepository>(
+      () => AuthRepositoryImplementation(authRemoteDataSource: sl()),
+    )
+    //use cases
+    ..registerLazySingleton(() => SignInUseCase(authRepository: sl()))
+    ..registerLazySingleton(() => SignUpUseCase(authRepository: sl()))
+    //NOT USED YET
+    ..registerLazySingleton(() => SignOutUseCase(authRepository: sl()))
+    ..registerLazySingleton(() => StreamAuthUserUseCase(authRepository: sl()))
+    //Application Logic
+    ..registerFactory(() => SignInCubit(signInUseCase: sl()))
+    ..registerFactory(() => SignUpCubit(signUpUseCase: sl()));
 }
