@@ -18,7 +18,7 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Demo Video
 
-<video src="assets/video.mp4" controls width="600"></video>
+[Click here to watch the demo video](assets/video.mp4)
 
 ## Screenshots
 
