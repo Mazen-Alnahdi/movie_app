@@ -18,7 +18,7 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Demo Video
 
-[Click here to watch the demo video](assets/assets/RunningDevices-movie_app2025-07-1012-22-57-ezgif.com-video-to-gif-converter.gif)
+[Click here to watch the demo video](assets/RunningDevices-movie_app2025-07-1012-22-57-ezgif.com-video-to-gif-converter.gif)
 
 ## Screenshots
 
