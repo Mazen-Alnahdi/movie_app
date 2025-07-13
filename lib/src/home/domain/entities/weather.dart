@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
 class Weather extends Equatable {
-  final List<String> dateTime;
+  final List<DateTime> dateTime;
   final List<double> temperature;
   final List<int> cloudCover;
   final List<double> windSpeed;
