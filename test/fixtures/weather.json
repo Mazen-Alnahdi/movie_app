@@ -1,0 +1,30 @@
+{
+  "dateTime": [
+    "2025-07-13T00:00",
+    "2025-07-13T01:00"
+  ],
+  "temperature": [
+    30,
+    28.5
+  ],
+  "cloudCover": [
+    12,
+    15
+  ],
+  "windSpeed": [
+    4,
+    3.2
+  ],
+  "relativeHumidity": [
+    55,
+    60
+  ],
+  "precipitation": [
+    0,
+    0.1
+  ],
+  "uvIndex": [
+    0,
+    0.0
+  ]
+}
