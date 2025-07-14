@@ -25,7 +25,7 @@ class ServerFailure extends Failure {
 class APIFailure extends Failure {
   const APIFailure({required super.message, required super.statusCode});
 
-  APIFailure.fromException(ServerException exception)
+  APIFailure.fromException(APIException exception)
     : this(message: exception.message, statusCode: exception.statusCode);
 }
 

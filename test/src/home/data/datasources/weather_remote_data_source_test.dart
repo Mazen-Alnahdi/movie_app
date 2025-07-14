@@ -7,7 +7,7 @@ import 'package:movie_app/core/error/exceptions.dart';
 import 'package:movie_app/src/home/data/datasources/weather_remote_data_source.dart';
 import 'package:movie_app/src/home/data/models/weather_model.dart';
 
-import '../../../../../fixtures/fixture_reader.dart';
+import '../../../../fixtures/fixture_reader.dart';
 
 class MockHttpClient extends Mock implements http.Client {}
 
