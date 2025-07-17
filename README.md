@@ -24,3 +24,5 @@ samples, guidance on mobile development, and a full API reference.
 
 ![Firebase Firestore](assets/image1.png)
 ![Firebase Auth](assets/image2.png)
+![Home Page](assets/image3.png)
+
