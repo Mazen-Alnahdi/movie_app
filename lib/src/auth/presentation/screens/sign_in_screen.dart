@@ -33,7 +33,7 @@ class _SignInScreenState extends State<SignInScreen> {
             MaterialPageRoute(
               builder: (_) => BlocProvider.value(
                 value: sl<RetrieveWeatherCubit>(),
-                child: HomeScreen(),
+                child: HomeScreen(displayName: state.authUser.name ?? "User"),
               ),
             ),
           );
