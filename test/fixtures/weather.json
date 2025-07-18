@@ -1,0 +1,11 @@
+{
+  "hourly": {
+    "time": ["2025-07-13T00:00:00Z", "2025-07-13T01:00:00Z"],
+    "temperature_2m": [25.5, 24.7],
+    "cloud_cover": [20, 15],
+    "wind_speed_10m": [5.5, 4.2],
+    "relative_humidity_2m": [60, 65],
+    "precipitation": [0.0, 0.1],
+    "uv_index": [3.0, 2.5]
+  }
+}

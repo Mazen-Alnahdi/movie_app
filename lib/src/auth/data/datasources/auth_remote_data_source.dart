@@ -71,6 +71,9 @@ class AuthRemoteDataSourceImplementation implements AuthRemoteDataSource {
         throw Exception('Sign Up Failed: The User is Null after signing up');
       }
 
+      await credential.user?.updateDisplayName(name);
+      await credential.user?.reload();
+
       await createUser(user: credential.user!, name: name);
 
       return AuthUserModel.fromFirebaseAuthUser(credential.user!);
