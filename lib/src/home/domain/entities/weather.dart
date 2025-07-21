@@ -8,6 +8,7 @@ class Weather extends Equatable {
   final List<int> relativeHumidity;
   final List<double> precipitation;
   final List<double> uvIndex;
+  final List<int> weatherCode;
 
   const Weather({
     required this.dateTime,
@@ -17,6 +18,7 @@ class Weather extends Equatable {
     required this.relativeHumidity,
     required this.precipitation,
     required this.uvIndex,
+    required this.weatherCode,
   });
 
   const Weather.empty()
@@ -28,6 +30,7 @@ class Weather extends Equatable {
         precipitation: const [],
         relativeHumidity: const [],
         uvIndex: const [],
+        weatherCode: const [],
       );
 
   @override
@@ -39,5 +42,6 @@ class Weather extends Equatable {
     relativeHumidity,
     precipitation,
     uvIndex,
+    weatherCode,
   ];
 }

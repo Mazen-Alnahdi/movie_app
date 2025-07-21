@@ -7,4 +7,9 @@ abstract class WeatherRepository {
     required String longitude,
     required String latitude,
   });
+  ResultFuture<int> getTennisStatus({
+    required double temperature,
+    required int humidity,
+    required int weatherCode,
+  });
 }

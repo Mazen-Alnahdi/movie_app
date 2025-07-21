@@ -27,7 +27,7 @@ void main() {
     'latitude': tLatitude,
     'longitude': tLongitude,
     'hourly':
-        'temperature_2m,cloud_cover,wind_speed_10m,relative_humidity_2m,precipitation,uv_index',
+        'temperature_2m,cloud_cover,wind_speed_10m,relative_humidity_2m,precipitation,uv_index,weather_code',
     'timezone': 'auto',
   });
 

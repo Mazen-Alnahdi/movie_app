@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:intl/intl.dart';
 
 import '../../domain/entities/weather.dart';
 import '../blocs/retrieve_weather/retrieve_weather_cubit.dart';
+import '../widgets/additional_data_widget.dart';
+import '../widgets/data_selector_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   final String displayName;
@@ -134,12 +135,22 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                       ),
-                      _buildDateSelector(weather),
+                      WeatherDateSelector(
+                        filteredIndexes: filteredIndexes,
+                        weather: weather,
+                        selectedIndex: selectedIndex,
+                        onSelected: (index) {
+                          setState(() {
+                            selectedIndex = index;
+                          });
+                        },
+                      ),
+
                       const SizedBox(height: 20),
                       const Padding(
                         padding: EdgeInsets.symmetric(horizontal: 20),
                         child: Text(
-                          "Additional Data",
+                          "Today's Weather",
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 20,
@@ -148,7 +159,40 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                       const SizedBox(height: 10),
-                      _buildAdditionalData(weather, currentDataIndex),
+                      WeatherAdditionalData(
+                        dataItems: [
+                          (
+                            "Temperature",
+                            "${weather.temperature[currentDataIndex].toStringAsFixed(1)}°C",
+                            Icons.thermostat,
+                          ),
+                          (
+                            "Wind Speed",
+                            "${weather.windSpeed[currentDataIndex].toStringAsFixed(1)} m/s",
+                            Icons.air,
+                          ),
+                          (
+                            "Cloud Cover",
+                            "${weather.cloudCover[currentDataIndex]}%",
+                            Icons.cloud,
+                          ),
+                          (
+                            "Humidity",
+                            "${weather.relativeHumidity[currentDataIndex]}%",
+                            Icons.water_drop,
+                          ),
+                          (
+                            "Precipitation",
+                            "${weather.precipitation[currentDataIndex]} mm",
+                            Icons.grain,
+                          ),
+                          (
+                            "UV Index",
+                            "${weather.uvIndex[currentDataIndex].toStringAsFixed(1)}",
+                            Icons.wb_sunny,
+                          ),
+                        ],
+                      ),
                     ],
                   ),
                 );
@@ -156,141 +200,13 @@ class _HomeScreenState extends State<HomeScreen> {
 
               return const Center(
                 child: Text(
-                  "No data yet",
+                  "Loading...",
                   style: TextStyle(color: Colors.white),
                 ),
               );
             },
           ),
         ),
-      ),
-    );
-  }
-
-  Widget _buildDateSelector(Weather weather) {
-    return Container(
-      margin: const EdgeInsets.symmetric(vertical: 20),
-      padding: const EdgeInsets.symmetric(horizontal: 10),
-      decoration: BoxDecoration(
-        color: Colors.black.withOpacity(0.2),
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: Row(
-          children: List.generate(filteredIndexes.length, (index) {
-            final i = filteredIndexes[index];
-            final date = weather.dateTime[i];
-            final isSelected = selectedIndex == index;
-
-            return GestureDetector(
-              onTap: () {
-                setState(() {
-                  selectedIndex = index;
-                });
-              },
-              child: Container(
-                margin: const EdgeInsets.symmetric(horizontal: 6, vertical: 10),
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 16,
-                  vertical: 10,
-                ),
-                decoration: BoxDecoration(
-                  color: isSelected ? Colors.white : Colors.transparent,
-                  borderRadius: BorderRadius.circular(18),
-                ),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(
-                      DateFormat.E().format(date),
-                      style: TextStyle(
-                        color: isSelected ? Colors.black : Colors.white70,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(height: 4),
-                    Text(
-                      "${date.day}",
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: isSelected ? Colors.black : Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            );
-          }),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildAdditionalData(Weather weather, int index) {
-    final dataItems = [
-      (
-        "Temperature",
-        "${weather.temperature[index].toStringAsFixed(1)}°C",
-        Icons.thermostat,
-      ),
-      (
-        "Wind Speed",
-        "${weather.windSpeed[index].toStringAsFixed(1)} m/s",
-        Icons.air,
-      ),
-      ("Cloud Cover", "${weather.cloudCover[index]}%", Icons.cloud),
-      ("Humidity", "${weather.relativeHumidity[index]}%", Icons.water_drop),
-      ("Precipitation", "${weather.precipitation[index]} mm", Icons.grain),
-      (
-        "UV Index",
-        "${weather.uvIndex[index].toStringAsFixed(1)}",
-        Icons.wb_sunny,
-      ),
-    ];
-
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: GridView.count(
-        crossAxisCount: 2,
-        crossAxisSpacing: 16,
-        mainAxisSpacing: 16,
-        shrinkWrap: true,
-        physics: const NeverScrollableScrollPhysics(),
-        children: dataItems.map((item) {
-          return Container(
-            decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.08),
-              borderRadius: BorderRadius.circular(16),
-            ),
-            padding: const EdgeInsets.all(16),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(item.$3, color: Colors.white, size: 30),
-                const SizedBox(height: 10),
-                Text(
-                  item.$1,
-                  style: const TextStyle(
-                    color: Colors.white70,
-                    fontSize: 14,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-                const SizedBox(height: 6),
-                Text(
-                  item.$2,
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ],
-            ),
-          );
-        }).toList(),
       ),
     );
   }
@@ -303,11 +219,11 @@ class _NavItem extends StatelessWidget {
   final bool selected;
 
   const _NavItem({
-    Key? key,
+    super.key,
     required this.icon,
     required this.label,
     this.selected = false,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

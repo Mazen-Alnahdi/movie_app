@@ -32,6 +32,9 @@ class WeatherModel extends Weather {
   @JsonKey(name: 'uv_index', defaultValue: [])
   final List<double> uvIndex;
 
+  @JsonKey(name: 'weather_code', defaultValue: [])
+  final List<int> weatherCode;
+
   const WeatherModel({
     required this.dateTime,
     required this.temperature,
@@ -40,6 +43,7 @@ class WeatherModel extends Weather {
     required this.relativeHumidity,
     required this.precipitation,
     required this.uvIndex,
+    required this.weatherCode,
   }) : super(
          dateTime: dateTime,
          temperature: temperature,
@@ -48,6 +52,7 @@ class WeatherModel extends Weather {
          relativeHumidity: relativeHumidity,
          precipitation: precipitation,
          uvIndex: uvIndex,
+         weatherCode: weatherCode,
        );
 
   /// Use this if you're passing the full API response (with 'hourly' field)
@@ -94,6 +99,11 @@ class WeatherModel extends Weather {
               ?.map((e) => (e as num).toDouble())
               .toList() ??
           [],
+      weatherCode:
+          (map['weather_code'] as List<dynamic>?)
+              ?.map((e) => (e as num).toInt())
+              .toList() ??
+          [],
     );
   }
 
@@ -106,6 +116,7 @@ class WeatherModel extends Weather {
       relativeHumidity: [],
       precipitation: [],
       uvIndex: [],
+      weatherCode: [],
     );
   }
 
@@ -117,6 +128,7 @@ class WeatherModel extends Weather {
     'relative_humidity_2m': relativeHumidity,
     'precipitation': precipitation,
     'uv_index': uvIndex,
+    'weather_code': weatherCode,
   };
 
   /// Only use this with already-cleaned hourly maps (not full API)
