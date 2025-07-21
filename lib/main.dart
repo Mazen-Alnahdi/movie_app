@@ -5,6 +5,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:movie_app/src/auth/presentation/controllers/blocs/sign_in/sign_in_cubit.dart';
 import 'package:movie_app/src/auth/presentation/controllers/blocs/sign_up/sign_up_cubit.dart';
 import 'package:movie_app/src/auth/presentation/screens/welcome_screen.dart';
+import 'package:movie_app/src/home/presentation/blocs/get_tennis_status/get_tennis_status_cubit.dart';
 import 'package:movie_app/src/home/presentation/blocs/retrieve_weather/retrieve_weather_cubit.dart';
 
 import 'core/services/injection_container.dart';
@@ -32,8 +33,12 @@ class MyApp extends StatelessWidget {
         BlocProvider<RetrieveWeatherCubit>(
           create: (context) => sl<RetrieveWeatherCubit>(),
         ),
+
         BlocProvider<SignUpCubit>(create: (context) => sl<SignUpCubit>()),
         BlocProvider<SignInCubit>(create: (context) => sl<SignInCubit>()),
+        BlocProvider<GetTennisStatusCubit>(
+          create: (context) => sl<GetTennisStatusCubit>(),
+        ),
       ],
       child: MaterialApp(
         theme: ThemeData(

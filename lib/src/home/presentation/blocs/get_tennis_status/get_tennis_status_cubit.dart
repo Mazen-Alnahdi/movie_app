@@ -17,7 +17,7 @@ class GetTennisStatusCubit extends Cubit<GetTennisStatusState> {
     required int weatherCode,
   }) async {
     emit(const GetTennisStatusInProgress());
-
+    // print("inprogress");
     final result = await _getTennisStatusUseCase(
       GetTennisStatusParams(
         temperature: temperature,
@@ -25,6 +25,8 @@ class GetTennisStatusCubit extends Cubit<GetTennisStatusState> {
         weatherCode: weatherCode,
       ),
     );
+    // print('$temperature $humidity, $weatherCode');
+    // print('$result is result');
     result.fold(
       (failure) => emit(GetTennisStatusFailed(failure.message)),
       (status) => emit(GetTennisStatusSuccess(status)),

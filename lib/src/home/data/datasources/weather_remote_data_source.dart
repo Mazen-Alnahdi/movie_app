@@ -113,7 +113,7 @@ class WeatherRemoteDataSourceImplementation implements WeatherRemoteDataSource {
       temperatureMild,
       humidityNormal,
     ];
-    final url = Uri.parse('http://127.0.0.1:5001/predict');
+    final url = Uri.parse('http://10.0.2.2:5001/predict');
 
     Map<String, dynamic> body = {'features': features};
 
@@ -131,7 +131,8 @@ class WeatherRemoteDataSourceImplementation implements WeatherRemoteDataSource {
         );
       }
       final prediction = json.decode(response.body)['prediction'];
-      return prediction;
+      final result = (prediction as List<dynamic>).first as int;
+      return result;
     } on APIException {
       rethrow;
     } catch (e) {
