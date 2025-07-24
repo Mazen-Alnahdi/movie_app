@@ -1,24 +1,34 @@
 # Workout App
 
-A new Flutter project.
+A new Flutter project for Tennis Players.
 
 ## Getting Started
 
 This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+1-Run these commands in the terminal
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+python3 -m venv venv
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+source venv/bin/activate //MAC
 
+source venv/Scripts/activate. // Windows
+
+pip install Flask
+
+pip show Flask
+
+pip install numpy
+
+pip install scikit-learn==1.3.2
+
+python app.py
+
+python app.py // to host the AI model and access it through your local host on port 5001.
 
 ## Demo Video
 
-[Click here to watch the demo video](assets/RunningDevices-movie_app2025-07-1012-22-57-ezgif.com-video-to-gif-converter.gif)
+[Click here to watch the demo video](assets/Demo_app_final.gif)
 
 ## Screenshots
 
