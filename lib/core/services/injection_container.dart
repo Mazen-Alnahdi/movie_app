@@ -13,7 +13,9 @@ import 'package:movie_app/src/auth/presentation/controllers/blocs/sign_up/sign_u
 import 'package:movie_app/src/home/data/datasources/weather_remote_data_source.dart';
 import 'package:movie_app/src/home/data/repository/weather_repository_implementation.dart';
 import 'package:movie_app/src/home/domain/repositories/weather_repository.dart';
+import 'package:movie_app/src/home/domain/usecases/get_tennis_Status_use_case.dart';
 import 'package:movie_app/src/home/domain/usecases/retrieve_weather_use_case.dart';
+import 'package:movie_app/src/home/presentation/blocs/get_tennis_status/get_tennis_status_cubit.dart';
 import 'package:movie_app/src/home/presentation/blocs/retrieve_weather/retrieve_weather_cubit.dart';
 
 import '../../src/auth/domain/repositories/auth_repository.dart';
@@ -49,11 +51,15 @@ Future<void> init() async {
     ..registerLazySingleton(
       () => RetrieveWeatherUseCase(weatherRepository: sl()),
     )
+    ..registerLazySingleton(
+      () => GetTennisStatusUseCase(weatherRepository: sl()),
+    )
     //NOT USED YET
     ..registerLazySingleton(() => SignOutUseCase(authRepository: sl()))
     ..registerLazySingleton(() => StreamAuthUserUseCase(authRepository: sl()))
     //Application Logic
     ..registerFactory(() => SignInCubit(signInUseCase: sl()))
     ..registerFactory(() => SignUpCubit(signUpUseCase: sl()))
+    ..registerFactory(() => GetTennisStatusCubit(getTennisStatusUseCase: sl()))
     ..registerFactory(() => RetrieveWeatherCubit(retrieveWeatherUseCase: sl()));
 }

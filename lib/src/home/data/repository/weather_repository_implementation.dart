@@ -26,4 +26,22 @@ class WeatherRepositoryImplementation implements WeatherRepository {
       return Left(APIFailure.fromException(e));
     }
   }
+
+  @override
+  ResultFuture<int> getTennisStatus({
+    required double temperature,
+    required int humidity,
+    required int weatherCode,
+  }) async {
+    try {
+      final result = await _remoteDataSource.getTennisStatus(
+        temperature: temperature,
+        humidity: humidity,
+        weatherCode: weatherCode,
+      );
+      return Right(result);
+    } on APIException catch (e) {
+      return Left(APIFailure.fromException(e));
+    }
+  }
 }

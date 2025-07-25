@@ -40,6 +40,11 @@ WeatherModel _$WeatherModelFromJson(Map<String, dynamic> json) => WeatherModel(
           ?.map((e) => (e as num).toDouble())
           .toList() ??
       [],
+  weatherCode:
+      (json['weather_code'] as List<dynamic>?)
+          ?.map((e) => (e as num).toInt())
+          .toList() ??
+      [],
 );
 
 Map<String, dynamic> _$WeatherModelToJson(WeatherModel instance) =>
@@ -51,4 +56,5 @@ Map<String, dynamic> _$WeatherModelToJson(WeatherModel instance) =>
       'relative_humidity_2m': instance.relativeHumidity,
       'precipitation': instance.precipitation,
       'uv_index': instance.uvIndex,
+      'weather_code': instance.weatherCode,
     };

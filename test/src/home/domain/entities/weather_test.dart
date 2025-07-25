@@ -10,6 +10,7 @@ void main() {
     expect(Weather.empty().precipitation, equals(const []));
     expect(Weather.empty().relativeHumidity, equals(const []));
     expect(Weather.empty().uvIndex, equals(const []));
+    expect(Weather.empty().weatherCode, equals(const []));
   });
 
   test('Two Weather instances with same values are equal', () {
@@ -21,6 +22,7 @@ void main() {
       relativeHumidity: [],
       precipitation: [],
       uvIndex: [],
+      weatherCode: [],
     );
     const weather2 = Weather(
       dateTime: [],
@@ -30,6 +32,7 @@ void main() {
       relativeHumidity: [],
       precipitation: [],
       uvIndex: [],
+      weatherCode: [],
     );
 
     expect(weather1, equals(weather2));
@@ -44,6 +47,7 @@ void main() {
       relativeHumidity: [],
       precipitation: [],
       uvIndex: [],
+      weatherCode: [],
     );
     const weather2 = Weather(
       dateTime: [],
@@ -53,6 +57,7 @@ void main() {
       relativeHumidity: [],
       precipitation: [],
       uvIndex: [],
+      weatherCode: [],
     );
 
     expect(weather1, isNot(equals(weather2)));
@@ -67,7 +72,8 @@ void main() {
       relativeHumidity: [],
       precipitation: [],
       uvIndex: [],
+      weatherCode: [],
     );
-    expect(weather1.props, equals([[], [], [], [], [], [], []]));
+    expect(weather1.props, equals([[], [], [], [], [], [], [], []]));
   });
 }
